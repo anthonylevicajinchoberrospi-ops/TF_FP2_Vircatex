@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="modelo" name="Vircatex">
+  <packagedElement xmi:type="uml:Package" xmi:id="pkg" name="vircatex">
+    <packagedElement xmi:type="uml:Class" xmi:id="Empresa" name="Empresa">
+      <ownedAttribute xmi:id="Empresa_codigo" name="codigo" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Empresa_razon_social" name="razon_social" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Empresa_pais" name="pais" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Empresa_email" name="email" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedOperation xmi:id="Empresa_tipo" name="tipo" visibility="public"/>
+      <ownedOperation xmi:id="Empresa_ficha" name="ficha" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Cliente" name="Cliente">
+      <generalization xmi:id="gen_Cliente" general="Empresa"/>
+      <ownedAttribute xmi:id="Cliente_categoria" name="categoria" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Cliente_porcentaje_comision" name="porcentaje_comision" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedOperation xmi:id="Cliente_tipo" name="tipo" visibility="public"/>
+      <ownedOperation xmi:id="Cliente_ficha" name="ficha" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Proveedor" name="Proveedor">
+      <generalization xmi:id="gen_Proveedor" general="Empresa"/>
+      <ownedAttribute xmi:id="Proveedor_ruc" name="ruc" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Proveedor_especialidad" name="especialidad" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Proveedor_capacidad_mensual" name="capacidad_mensual" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedAttribute xmi:id="Proveedor_unidades_asignadas" name="unidades_asignadas" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedOperation xmi:id="Proveedor_capacidad_disponible" name="capacidad_disponible" visibility="public"/>
+      <ownedOperation xmi:id="Proveedor_puede_producir" name="puede_producir" visibility="public">
+        <ownedParameter xmi:id="Proveedor_puede_producir_cantidad" name="cantidad"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Proveedor_tipo" name="tipo" visibility="public"/>
+      <ownedOperation xmi:id="Proveedor_ficha" name="ficha" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Prenda" name="Prenda" isAbstract="true">
+      <ownedAttribute xmi:id="Prenda_codigo" name="codigo" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Prenda_descripcion" name="descripcion" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Prenda_tejido" name="tejido" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Prenda_costo_confeccion" name="costo_confeccion" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedAttribute xmi:id="Prenda_costo_avios" name="costo_avios" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedOperation xmi:id="Prenda_costo_material" name="costo_material" visibility="public" isAbstract="true"/>
+      <ownedOperation xmi:id="Prenda_tipo" name="tipo" visibility="public" isAbstract="true"/>
+      <ownedOperation xmi:id="Prenda_costo_unitario" name="costo_unitario" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Polo" name="Polo">
+      <generalization xmi:id="gen_Polo" general="Prenda"/>
+      <ownedAttribute xmi:id="Polo_peso_tela_kg" name="peso_tela_kg" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedAttribute xmi:id="Polo_precio_kg" name="precio_kg" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedAttribute xmi:id="Polo_estampado" name="estampado" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/></ownedAttribute>
+      <ownedOperation xmi:id="Polo_costo_material" name="costo_material" visibility="public"/>
+      <ownedOperation xmi:id="Polo_costo_unitario" name="costo_unitario" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Camisa" name="Camisa">
+      <generalization xmi:id="gen_Camisa" general="Prenda"/>
+      <ownedAttribute xmi:id="Camisa_metros_tela" name="metros_tela" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedAttribute xmi:id="Camisa_precio_metro" name="precio_metro" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedOperation xmi:id="Camisa_costo_material" name="costo_material" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Chompa" name="Chompa">
+      <generalization xmi:id="gen_Chompa" general="Prenda"/>
+      <ownedAttribute xmi:id="Chompa_peso_hilado_kg" name="peso_hilado_kg" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedAttribute xmi:id="Chompa_precio_hilado_kg" name="precio_hilado_kg" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/></ownedAttribute>
+      <ownedAttribute xmi:id="Chompa_galga" name="galga" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedOperation xmi:id="Chompa_costo_material" name="costo_material" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="LineaPedido" name="LineaPedido">
+      <ownedAttribute xmi:id="LineaPedido_cantidad" name="cantidad" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedOperation xmi:id="LineaPedido_subtotal" name="subtotal" visibility="public"/>
+      <ownedAttribute xmi:id="asoc3_dst" name="prenda" type="Prenda" aggregation="none" association="asoc3"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc3_lo" value="1"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc3_hi" value="1"/></ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Pedido" name="Pedido">
+      <ownedAttribute xmi:id="Pedido_numero" name="numero" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Pedido_fecha" name="fecha" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedAttribute xmi:id="Pedido_estado" name="estado" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/></ownedAttribute>
+      <ownedOperation xmi:id="Pedido_agregar_linea" name="agregar_linea" visibility="public">
+        <ownedParameter xmi:id="Pedido_agregar_linea_prenda" name="prenda"/>
+        <ownedParameter xmi:id="Pedido_agregar_linea_cantidad" name="cantidad"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Pedido_cambiar_estado" name="cambiar_estado" visibility="public">
+        <ownedParameter xmi:id="Pedido_cambiar_estado_nuevo_estado" name="nuevo_estado"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Pedido_inspeccionar" name="inspeccionar" visibility="public">
+        <ownedParameter xmi:id="Pedido_inspeccionar_defectos" name="defectos"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Pedido_asignar_descuento" name="asignar_descuento" visibility="public">
+        <ownedParameter xmi:id="Pedido_asignar_descuento_estrategia" name="estrategia"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Pedido_total_prendas" name="total_prendas" visibility="public"/>
+      <ownedOperation xmi:id="Pedido_costo_produccion" name="costo_produccion" visibility="public"/>
+      <ownedOperation xmi:id="Pedido_comision" name="comision" visibility="public"/>
+      <ownedOperation xmi:id="Pedido_descuento" name="descuento" visibility="public"/>
+      <ownedOperation xmi:id="Pedido_precio_fob" name="precio_fob" visibility="public"/>
+      <ownedOperation xmi:id="Pedido_precio_fob_unitario" name="precio_fob_unitario" visibility="public"/>
+      <ownedOperation xmi:id="Pedido_cronograma_pago_proveedor" name="cronograma_pago_proveedor" visibility="public">
+        <ownedParameter xmi:id="Pedido_cronograma_pago_proveedor_cuotas" name="cuotas"/>
+      </ownedOperation>
+      <ownedAttribute xmi:id="asoc0_dst" name="cliente" type="Cliente" aggregation="none" association="asoc0"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc0_lo" value="1"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc0_hi" value="1"/></ownedAttribute>
+      <ownedAttribute xmi:id="asoc1_dst" name="proveedor" type="Proveedor" aggregation="none" association="asoc1"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc1_lo" value="1"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc1_hi" value="1"/></ownedAttribute>
+      <ownedAttribute xmi:id="asoc2_dst" name="lineas" type="LineaPedido" aggregation="composite" association="asoc2"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc2_lo" value="1"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc2_hi" value="-1"/></ownedAttribute>
+      <ownedAttribute xmi:id="asoc4_dst" name="inspeccion" type="InspeccionCalidad" aggregation="shared" association="asoc4"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc4_lo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc4_hi" value="1"/></ownedAttribute>
+      <ownedAttribute xmi:id="asoc5_dst" name="estrategia_descuento" type="EstrategiaDescuento" aggregation="none" association="asoc5"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc5_lo" value="1"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc5_hi" value="1"/></ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="InspeccionCalidad" name="InspeccionCalidad">
+      <ownedAttribute xmi:id="InspeccionCalidad_tamano_lote" name="tamano_lote" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedAttribute xmi:id="InspeccionCalidad_muestra" name="muestra" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedAttribute xmi:id="InspeccionCalidad_aceptacion" name="aceptacion" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedAttribute xmi:id="InspeccionCalidad_defectos" name="defectos" visibility="public"><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/></ownedAttribute>
+      <ownedOperation xmi:id="InspeccionCalidad_registrar_defectos" name="registrar_defectos" visibility="public">
+        <ownedParameter xmi:id="InspeccionCalidad_registrar_defectos_defectos" name="defectos"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="InspeccionCalidad_aprobado" name="aprobado" visibility="public"/>
+      <ownedOperation xmi:id="InspeccionCalidad_resumen" name="resumen" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="EstrategiaDescuento" name="EstrategiaDescuento">
+      <ownedOperation xmi:id="EstrategiaDescuento_calcular" name="calcular" visibility="public" isAbstract="true">
+        <ownedParameter xmi:id="EstrategiaDescuento_calcular_monto" name="monto"/>
+        <ownedParameter xmi:id="EstrategiaDescuento_calcular_cantidad" name="cantidad"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="EstrategiaDescuento_nombre" name="nombre" visibility="public" isAbstract="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="SinDescuento" name="SinDescuento">
+      <interfaceRealization xmi:id="real_SinDescuento" name="" client="SinDescuento" supplier="EstrategiaDescuento" contract="EstrategiaDescuento"/>
+      <ownedOperation xmi:id="SinDescuento_calcular" name="calcular" visibility="public">
+        <ownedParameter xmi:id="SinDescuento_calcular_monto" name="monto"/>
+        <ownedParameter xmi:id="SinDescuento_calcular_cantidad" name="cantidad"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SinDescuento_nombre" name="nombre" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="DescuentoPorVolumen" name="DescuentoPorVolumen">
+      <interfaceRealization xmi:id="real_DescuentoPorVolumen" name="" client="DescuentoPorVolumen" supplier="EstrategiaDescuento" contract="EstrategiaDescuento"/>
+      <ownedOperation xmi:id="DescuentoPorVolumen_calcular" name="calcular" visibility="public">
+        <ownedParameter xmi:id="DescuentoPorVolumen_calcular_monto" name="monto"/>
+        <ownedParameter xmi:id="DescuentoPorVolumen_calcular_cantidad" name="cantidad"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="DescuentoPorVolumen_nombre" name="nombre" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="DescuentoClienteFrecuente" name="DescuentoClienteFrecuente">
+      <interfaceRealization xmi:id="real_DescuentoClienteFrecuente" name="" client="DescuentoClienteFrecuente" supplier="EstrategiaDescuento" contract="EstrategiaDescuento"/>
+      <ownedOperation xmi:id="DescuentoClienteFrecuente_calcular" name="calcular" visibility="public">
+        <ownedParameter xmi:id="DescuentoClienteFrecuente_calcular_monto" name="monto"/>
+        <ownedParameter xmi:id="DescuentoClienteFrecuente_calcular_cantidad" name="cantidad"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="DescuentoClienteFrecuente_nombre" name="nombre" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="SistemaVircatex" name="SistemaVircatex">
+      <ownedAttribute xmi:id="SistemaVircatex__instancia" name="_instancia" visibility="private" isStatic="true" type="SistemaVircatex"/>
+      <ownedOperation xmi:id="SistemaVircatex_registrar_cliente" name="registrar_cliente" visibility="public">
+        <ownedParameter xmi:id="SistemaVircatex_registrar_cliente_cliente" name="cliente"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SistemaVircatex_buscar_cliente" name="buscar_cliente" visibility="public">
+        <ownedParameter xmi:id="SistemaVircatex_buscar_cliente_codigo" name="codigo"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SistemaVircatex_registrar_proveedor" name="registrar_proveedor" visibility="public">
+        <ownedParameter xmi:id="SistemaVircatex_registrar_proveedor_proveedor" name="proveedor"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SistemaVircatex_proveedores_disponibles" name="proveedores_disponibles" visibility="public">
+        <ownedParameter xmi:id="SistemaVircatex_proveedores_disponibles_especialidad" name="especialidad"/>
+        <ownedParameter xmi:id="SistemaVircatex_proveedores_disponibles_cantidad" name="cantidad"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SistemaVircatex_registrar_prenda" name="registrar_prenda" visibility="public">
+        <ownedParameter xmi:id="SistemaVircatex_registrar_prenda_prenda" name="prenda"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SistemaVircatex_crear_pedido" name="crear_pedido" visibility="public">
+        <ownedParameter xmi:id="SistemaVircatex_crear_pedido_cod_cliente" name="cod_cliente"/>
+        <ownedParameter xmi:id="SistemaVircatex_crear_pedido_cod_proveedor" name="cod_proveedor"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SistemaVircatex_buscar_pedido" name="buscar_pedido" visibility="public">
+        <ownedParameter xmi:id="SistemaVircatex_buscar_pedido_numero" name="numero"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="SistemaVircatex_total_comisiones" name="total_comisiones" visibility="public"/>
+      <ownedOperation xmi:id="SistemaVircatex_tasa_rechazo" name="tasa_rechazo" visibility="public"/>
+      <ownedAttribute xmi:id="asoc6_dst" name="clientes" type="Cliente" aggregation="shared" association="asoc6"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc6_lo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc6_hi" value="-1"/></ownedAttribute>
+      <ownedAttribute xmi:id="asoc7_dst" name="proveedores" type="Proveedor" aggregation="shared" association="asoc7"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc7_lo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc7_hi" value="-1"/></ownedAttribute>
+      <ownedAttribute xmi:id="asoc8_dst" name="prendas" type="Prenda" aggregation="shared" association="asoc8"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc8_lo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc8_hi" value="-1"/></ownedAttribute>
+      <ownedAttribute xmi:id="asoc9_dst" name="pedidos" type="Pedido" aggregation="shared" association="asoc9"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc9_lo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc9_hi" value="-1"/></ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="FabricaPrendas" name="FabricaPrendas">
+      <ownedOperation xmi:id="FabricaPrendas_crear" name="crear" visibility="public" isStatic="true">
+        <ownedParameter xmi:id="FabricaPrendas_crear_tipo" name="tipo"/>
+        <ownedParameter xmi:id="FabricaPrendas_crear_datos" name="datos"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="FabricaPrendas_tipos_disponibles" name="tipos_disponibles" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Menu" name="Menu">
+      <ownedOperation xmi:id="Menu_iniciar" name="iniciar" visibility="public"/>
+      <ownedAttribute xmi:id="asoc10_dst" name="sistema" type="SistemaVircatex" aggregation="none" association="asoc10"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc10_lo" value="1"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc10_hi" value="1"/></ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc0" memberEnd="asoc0_dst asoc0_src"><ownedEnd xmi:id="asoc0_src" type="Pedido" association="asoc0"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc0_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc0_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc1" memberEnd="asoc1_dst asoc1_src"><ownedEnd xmi:id="asoc1_src" type="Pedido" association="asoc1"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc1_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc1_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc2" memberEnd="asoc2_dst asoc2_src"><ownedEnd xmi:id="asoc2_src" type="Pedido" association="asoc2"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc2_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc2_shi" value="1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc3" memberEnd="asoc3_dst asoc3_src"><ownedEnd xmi:id="asoc3_src" type="LineaPedido" association="asoc3"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc3_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc3_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc4" memberEnd="asoc4_dst asoc4_src"><ownedEnd xmi:id="asoc4_src" type="Pedido" association="asoc4"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc4_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc4_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc5" memberEnd="asoc5_dst asoc5_src"><ownedEnd xmi:id="asoc5_src" type="Pedido" association="asoc5"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc5_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc5_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc6" memberEnd="asoc6_dst asoc6_src"><ownedEnd xmi:id="asoc6_src" type="SistemaVircatex" association="asoc6"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc6_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc6_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc7" memberEnd="asoc7_dst asoc7_src"><ownedEnd xmi:id="asoc7_src" type="SistemaVircatex" association="asoc7"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc7_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc7_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc8" memberEnd="asoc8_dst asoc8_src"><ownedEnd xmi:id="asoc8_src" type="SistemaVircatex" association="asoc8"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc8_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc8_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc9" memberEnd="asoc9_dst asoc9_src"><ownedEnd xmi:id="asoc9_src" type="SistemaVircatex" association="asoc9"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc9_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc9_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="asoc10" memberEnd="asoc10_dst asoc10_src"><ownedEnd xmi:id="asoc10_src" type="Menu" association="asoc10"><lowerValue xmi:type="uml:LiteralInteger" xmi:id="asoc10_slo" value="0"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="asoc10_shi" value="-1"/></ownedEnd></packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep0" name="crea" client="FabricaPrendas" supplier="Prenda"/>
+  </packagedElement>
+</uml:Model>
